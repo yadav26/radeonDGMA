@@ -1,5 +1,5 @@
 # radeonDGMA
-*Overview*
+******Overview*****************************************
 Direct Graphic Memory Access (DirectGMA) exposes a part of the GPU memory and makes it accessible to other devices on the bus. By knowing the address of the exposed memory, any device that supports DirectGMA can write directly into GPU memory and vice versa. The GPU can write into the memory of a peer device instead of transferring the data to system memory first. This mechanism can be used to exchange data between AMD FirePro™ GPUs and 3rd party devices or to do peer-to-peer transfers between multiple AMD FirePro GPUs in one system. With today’s PCIE 3.0 technology, DirectGMA is a very efficient way of transferring data at very low latency.
 
 *Key Features*
