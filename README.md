@@ -1,5 +1,25 @@
 # radeonDGMA
-How to enable DGMA (direct graphics memory access) source, library and driver for redhat 7
+*Overview*
+Direct Graphic Memory Access (DirectGMA) exposes a part of the GPU memory and makes it accessible to other devices on the bus. By knowing the address of the exposed memory, any device that supports DirectGMA can write directly into GPU memory and vice versa. The GPU can write into the memory of a peer device instead of transferring the data to system memory first. This mechanism can be used to exchange data between AMD FirePro™ GPUs and 3rd party devices or to do peer-to-peer transfers between multiple AMD FirePro GPUs in one system. With today’s PCIE 3.0 technology, DirectGMA is a very efficient way of transferring data at very low latency.
+
+*Key Features*
+image001Makes a portion of the GPU memory accessible to other devices
+Allows devices on the bus to write directly into this area of GPU memory
+Allows GPUs to write directly into the memory of remote devices on the bus supporting DirectGMA
+Provides a driver interface to allow 3rd party hardware vendors to support data exchange with an AMD GPU using DirectGMA
+Peer-to-Peer Transfers between GPUs
+Use high-speed DMA transfers to copy data between the memories of two GPUs on the same system/PCIe bus.
+Peer-to-Peer Transfers between GPU and FPGAs
+Use high-speed DMA transfers to copy data between the memories of the GPU and the FPGA memory.
+DirectGMA for Video
+Optimized pipeline for frame-based devices such as frame grabbers, video switchers, HD-SDI capture, and CameraLink devices. See our SDI webpage
+
+*Requirements*
+APIs supporting AMD FirePro DirectGMA are : OpenGL®, OpenCLTM, DirectX®
+The supported operation systems are: Windows ® 7/8/10 64 Bit and Linux ® 64 Bit
+Supported only on selected workstation hardware (AMD FirePro WTM W5x00 and above as well as all AMD FireProTMS series)
+
+*How to enable DGMA (direct graphics memory access) source, library and driver for redhat 7*
 
 DirectGMA_CL
 Simple example showing how to use DGMA in OpenCL
