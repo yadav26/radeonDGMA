@@ -16,6 +16,25 @@ on Linux: in your terminal, enter the commands :
 
 aticonfig --initial=dual-head --adapter=all -f aticonfig --set-pcs-val=MCIL,DMAOGLExtensionApertureMB,96 aticonfig --set-pcs-u32=KERNEL,InitialPhysicalUswcUsageSize,96 and reboot.
 
+***************************************************************************************************************************************
+*******ANOTHER WAY TO ENABLE DGMA IN REDHAT 7 USING AMDGPU-PRO 18.50 DRIVER USING GRUB OPTION*****************************************
+ - $ sudo ./amdgpu-pro-install -y --opencl=legacy
+  - $ sudo reboot
+  - edit grub and add amdgpu.direct_gma_size=64 in kernel command line parameters
+  - boot the system (run ctrl+x after adding amdgpu.direct_gma_size grub entry)
+  - run below command and observe the output(as attached dmesg.jpg)
+    $ dmesg | grep -i gma
+- Install AMD-APP-SDK(AMD-APP-SDKInstaller-v3.0.130.136-GA-linux64.tar)
+  - sudo sh AMD-APP-SDK-v3.0.130.136-GA-linux64.sh 
+  - run clinfo in another terminal and observe devices (you will not see cl_amd_bus_addressable_memory, it is fine)
+  - Now you can run any dGMA sample application(Do not check for cl_amd_bus_addressable_memory extension)
+- Run dGMA opencl test application(showcases data transfer from E9550<->wx7100)
+  - $ ./oclDirectGMA
+
+NOTE- 96MB is the limited size from the vBIOS. To increase DGMA size they need to request new vBIOS with higher dGMA aperture size.
+***************************************************************************************************************************************
+
+
 Prerequisites:
 cmake 2.8.12 or higher AMD APP SDK 2.9.1 or higher
 
